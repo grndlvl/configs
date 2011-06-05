@@ -1,7 +1,7 @@
 color ir_black
 set nowrap
 set transparency=5
-set guioptions=aAce
+set guioptions=em
 set colorcolumn=80
 set gfn=Monaco:h12
 
