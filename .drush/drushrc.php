@@ -54,9 +54,15 @@
 // to allow commands with spaces to be used.
 # $options['allow-spaces-in-commands'] = 1;
 
-// Jonathan's format:
-if (($index = array_search('Sites', $directories)) && isset($directories[$index + 1])) {
-  $options['l'] = $directories[$index + 1] .'.jonathan.local';
+$current_directory = realpath(getcwd());
+$directories = explode(DIRECTORY_SEPARATOR, $current_directory);
+// Advo formats:
+if ($index = array_search('htdocs', $directories)) {
+  $webroot = implode(DIRECTORY_SEPARATOR, array_slice($directories, 0, $index + 1));
+  $sites = $webroot . DIRECTORY_SEPARATOR . 'sites';
+  $site = current(glob($sites . DIRECTORY_SEPARATOR . '*.local', GLOB_ONLYDIR));
+  $site = str_replace($sites . DIRECTORY_SEPARATOR, '', $site);
+  $options[l] = $site;
 }
 
 // Specify your Drupal core base directory (useful if you use symlinks).
