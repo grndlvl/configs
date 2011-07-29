@@ -19,7 +19,11 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias cd..='cd ..'
 
+# Bind up/down arrow to history search.
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+
 PATH=$PATH:~/scripts
 PATH=$PATH:/Applications/xampp/xamppfiles/bin
-PATH=$PATH:/opt/subversion/bin
+PATH=/opt/subversion/bin:$PATH
 export PATH
