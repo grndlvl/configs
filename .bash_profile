@@ -1,3 +1,7 @@
+# add color to grep
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+
 # macvim
 alias mvim='/opt/macvim/mvim'
 
