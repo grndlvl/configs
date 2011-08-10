@@ -3,7 +3,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # macvim
-alias mvim='/opt/macvim/mvim'
+#alias mvim='/opt/macvim/mvim'
 
 # some more ls aliases
 alias ls='ls -G'
@@ -29,5 +29,5 @@ bind '"\e[B":history-search-forward'
 
 PATH=$PATH:~/scripts
 PATH=$PATH:/Applications/xampp/xamppfiles/bin
-PATH=/opt/subversion/bin:$PATH
+#PATH=/opt/subversion/bin:$PATH
 export PATH

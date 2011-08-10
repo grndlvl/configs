@@ -1,7 +1,6 @@
 .CFUserTextEncoding
 .bash_history
 .com.apple.timemachine.supported
-.gvimrc
 .lesshst
 .mysql_history
 .mysqldata/
@@ -10,7 +9,6 @@
 .subversion/
 .vim/
 .viminfo
-.vimrc
 Applications/
 Desktop/
 Documents/
