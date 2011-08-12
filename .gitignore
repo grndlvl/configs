@@ -24,3 +24,8 @@ scripts/
 vim-addons/
 vim-backup/
 .Trash/
+.rvm
+.NERDTreeBookmarks
+.gem
+.rvmrc
+.vim_mru_files

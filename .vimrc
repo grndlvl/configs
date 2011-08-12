@@ -1,7 +1,8 @@
 set nocompatible
 
-" Pathogen configuration
+" Infect vim with pathogen goodness!
 call pathogen#infect()
+call pathogen#helptags()
 
 filetype plugin indent on
 set number
@@ -9,7 +10,7 @@ set ruler
 syntax on
 
 " Default color scheme
-color desert
+color ir_black
 
 " Directories for swp files
 set backupdir=~/.vim/backup
@@ -26,8 +27,8 @@ set nowrap
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set expandtab
 set list listchars=tab:\ \ ,trail:·
+set expandtab
 
 " Searching
 set hlsearch
@@ -48,9 +49,11 @@ if has("autocmd")
     \| exe "normal g'\"" | endif
 
   " Drupal *.module and *.install files.
-  augroup module
-    autocmd BufRead,BufNewFile *.{module,install,test,inc} set filetype=php.drupal.html
-  augroup END
+  autocmd BufRead,BufNewFile *.{module,install,test,inc} set filetype=php.drupal.html
+  " Markdown
+  autocmd BufRead,BufNewFile *.{md,mkd,markdown} set filetype=markdown
+  " Ruby
+  autocmd BufRead,BufNewFile {Rakefile,Capfile,Gemfile} set filetype=ruby
 endif
 
 " NERDTree configuration
