@@ -47,7 +47,7 @@ set laststatus=2
 set foldmethod=indent
 set foldnestmax=3
 set foldlevel=0
-"set nofoldenable
+set nofoldenable
 
 if has("autocmd")
   " Remember last location in file
