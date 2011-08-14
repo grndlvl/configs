@@ -2,7 +2,7 @@ colorscheme ir_black
 set transparency=5
 set guioptions=em
 set colorcolumn=80
-set gfn=Monaco:h12
+set gfn=Monaco:h14
 
 " Project Tree
 autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))

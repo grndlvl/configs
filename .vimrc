@@ -43,6 +43,12 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/,CVS*
 " Status bar
 set laststatus=2
 
+" Code folding
+set foldmethod=indent
+set foldnestmax=3
+set foldlevel=0
+"set nofoldenable
+
 if has("autocmd")
   " Remember last location in file
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
