@@ -28,7 +28,7 @@ bind '"\e[B":history-search-forward'
 
 PATH=$PATH:'~/scripts'
 PATH=$PATH:"~/scripts/drush"
-PATH=$PATH:'/Applications/xampp/xamppfiles/bin'
+PATH='/Applications/XAMPP/xamppfiles/bin':$PATH
 #PATH=/opt/subversion/bin:$PATH
 PATH=$PATH:'/usr/local/Cellar/python'
 export PATH
