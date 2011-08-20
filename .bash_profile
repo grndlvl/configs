@@ -26,8 +26,8 @@ alias cd..='cd ..'
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
-PATH=$PATH:'~/scripts'
-PATH=$PATH:"~/scripts/drush"
+PATH=$PATH:'~/Scripts'
+PATH=$PATH:"~/Scripts/drush"
 PATH='/Applications/XAMPP/xamppfiles/bin':$PATH
 #PATH=/opt/subversion/bin:$PATH
 PATH=$PATH:'/usr/local/Cellar/python'
