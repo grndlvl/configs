@@ -35,4 +35,4 @@ export PATH
 
 export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 
-[[ -s "/Users/jonathan/.rvm/scripts/rvm" ]] && source "/Users/jonathan/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+[[ -s "/Users/$USER/.rvm/scripts/rvm" ]] && source "/Users/$USER/.rvm/scripts/rvm"  # This loads RVM into a shell session.
