@@ -56,11 +56,11 @@
 
 $current_directory = realpath(getcwd());
 $directories = explode(DIRECTORY_SEPARATOR, $current_directory);
-// Advo formats:
-if ($index = array_search('htdocs', $directories)) {
+// Local formats:
+if ($index = array_search('dev', $directories)) {
   $webroot = implode(DIRECTORY_SEPARATOR, array_slice($directories, 0, $index + 1));
   $sites = $webroot . DIRECTORY_SEPARATOR . 'sites';
-  $site = current(glob($sites . DIRECTORY_SEPARATOR . '*.local', GLOB_ONLYDIR));
+  $site = current(glob($sites . DIRECTORY_SEPARATOR . '*.dev', GLOB_ONLYDIR));
   $site = str_replace($sites . DIRECTORY_SEPARATOR, '', $site);
   $options[l] = $site;
 }
