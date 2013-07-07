@@ -1,0 +1,71 @@
+*filter
+
+#############################
+# Policies.
+#############################
+
+-P OUTPUT ACCEPT
+-P INPUT DROP
+-P FORWARD DROP
+-N SERVICES
+# Used for redirecting ports.
+#-t nat -P OUTPUT ACCEPT
+#-t nat -P POSTROUTING ACCEPT
+
+#############################
+# Attack prevention.
+#############################
+
+# Anti-spoofing -- Don't allow packets that claim to be from the loopback ip, but
+# came in from the physical network interface.
+-A INPUT ! -i lo -d 127.0.0.0/8 -j REJECT
+
+# Limit ping requests (Smurf attack) -- Only Allow 1 ping request every 1 seconds.
+-A INPUT -p icmp -m limit --limit 1/second -j ACCEPT
+
+# Bogus TCP flags.
+-A INPUT   -m state --state INVALID -j REJECT
+-A FORWARD -m state --state INVALID -j REJECT  
+-A OUTPUT  -m state --state INVALID -j REJECT
+-A INPUT -p tcp --tcp-flags FIN,ACK FIN -j REJECT
+-A INPUT -p tcp --tcp-flags ACK,PSH PSH -j REJECT
+-A INPUT -p tcp --tcp-flags ACK,URG URG -j REJECT
+-A INPUT -p tcp --tcp-flags SYN,FIN SYN,FIN -j REJECT
+-A INPUT -p tcp --tcp-flags SYN,RST SYN,RST -j REJECT
+-A INPUT -p tcp --tcp-flags FIN,RST FIN,RST -j REJECT
+-A INPUT -p tcp --tcp-flags ALL FIN,PSH,URG -j REJECT
+
+#############################
+# Allowed inputs.
+#############################
+
+# Allows all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0.
+-A INPUT -i lo -j ACCEPT
+
+# Jump to SERVICES chain @line 26.
+-A INPUT -j SERVICES
+
+# Accepts all established inbound connections.
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+#############################
+# Allow services.
+#############################
+
+# Allows HTTP and HTTPS connections from anywhere (the normal ports for websites).
+# -A SERVICES -p tcp --dport 80 -j ACCEPT
+# -A INPUT -p tcp --dport 443 -j ACCEPT
+
+# Allows SSH connections.
+# -A SERVICES -p tcp -m state --state NEW --dport 22 -j ACCEPT
+
+# Allow access to cups server from internal network.
+#-A SERVICES -m iprange --src-range 192.168.1.1-192.168.1.254 -p udp --dport 631 -j ACCEPT  
+#-A SERVICES -m iprange --src-range 192.168.1.1-192.168.1.254 -p udp --dport 631 -j ACCEPT  
+
+# Redirect incoming port 80 to 8080 internally since our Apache is running on 8080 instead of 80.
+#-t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
+#-A FORWARD -p tcp --dport 8080 -j ACCEPT
+#-A SERVICES -p tcp --dport 8080 -j ACCEPT
+
+COMMIT
